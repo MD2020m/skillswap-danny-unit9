@@ -1,5 +1,6 @@
 import { filterSkillsByCategory, emptyResults, calculateTotalCosts, matchSkillsToUser } from "./skillswap.js";
-let skills = [
+import { fetchSkills, createSkill } from './api-service.js';
+/*let skills = [
     {
         title: 'Web Development',
         description: 'Web development tutoring. Offering help understanding and implementing HTML, CSS, and JavaScript',
@@ -28,7 +29,16 @@ let skills = [
         price: 35,
         category: 'Mathematics'
     }
-];
+];*/
+
+async function getSkills() {
+    const skills = await fetchSkills();
+
+    return skills;
+}
+
+const skills = await getSkills();
+console.log(skills);
 
 const skillList = document.getElementById('offerings-list');
 
@@ -55,6 +65,11 @@ const matchBtn = document.getElementById('skll-match-btn');
 matchBtn.addEventListener('click', () => {
     renderSkillMatch();
 });
+
+const postSkillBtn = document.getElementById('skill-creator-submit-btn');
+postSkillBtn.addEventListener('click', () => {
+    postNewSkill();
+})
 
 skillCards.forEach(card => {
 
@@ -194,4 +209,27 @@ function renderSkillMatch() {
 
         skillMatchDiv.innerHTML += `<p id='invld-skll-match-inpt'>Something went wrong. Please try again later`;
     }
+}
+
+async function postNewSkill() {
+    const titleInput = document.getElementById('skill-creator-title-input');
+    const title = titleInput.value.trim();
+
+    const categoryInput = document.getElementById('skill-creator-category-input');
+    const category = categoryInput.value.trim();
+
+    const priceInput = document.getElementById('skill-creator-price-input');
+    const price = priceInput.value.trim();
+
+    const descriptionInput = document.getElementById('skill-creator-description-input');
+    const description = descriptionInput.value.trim();
+
+    const skillData = {
+        title,
+        category,
+        price,
+        description
+    };
+
+    await createSkill(skillData);
 }
