@@ -1,0 +1,69 @@
+html {
+    background-color:bisque;
+}
+
+header {
+    background-color:chocolate;
+}
+
+.nav-btn {
+    background-color: cornflowerblue;
+}
+
+.nav-link {
+    color:black;
+    font-family:monospace;
+}
+
+#header-header {
+    font-size:x-large;
+}
+
+#hero-header {
+    font-size: large;
+}
+
+p {
+    font-family:'Courier New', Courier, monospace;
+}
+
+#offerings-header {
+    font-size:large;
+}
+
+.skill-offerings {
+    background-color: chocolate;
+}
+
+#offerings-list {
+    background-color:brown;
+    display: flex;
+    flex-direction: column;
+}
+
+.offering-entry {
+    color: white;
+    font-family:monospace;
+    flex-basis: calc(50% - 5px);
+    margin: 8px;
+}
+
+.skill-card {
+    display: flex;
+    flex-direction: column;
+
+    background-color: chocolate;
+    padding: 8px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.skl-card-title {
+    font-family: monospace;
+    font-size: medium;
+    color: white;
+}
+
+h1 {
+    font-family: monospace;
+}
